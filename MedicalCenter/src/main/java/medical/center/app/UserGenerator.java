@@ -32,10 +32,7 @@ public class UserGenerator {
 		user.setLogin("kuba");
 		user.setPassword("password");
 		user.setPhone("122223442");
-		user.setRole(3);
-		Receptionist receptionist = new Receptionist();
-		receptionist.setUser(user);
-		
+		user.setRole(3);		
 		return user;
 		
 	}

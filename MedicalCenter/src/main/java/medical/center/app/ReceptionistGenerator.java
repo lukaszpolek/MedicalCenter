@@ -34,8 +34,8 @@ public class ReceptionistGenerator {
 		user.setPhone("122223442");
 		user.setRole(3);
 		Receptionist receptionist = new Receptionist();
-		receptionist.setUser(user);
 		receptionist.setSalary(1500);
+		receptionist.setUser(user);
 		return receptionist;
 		
 	}

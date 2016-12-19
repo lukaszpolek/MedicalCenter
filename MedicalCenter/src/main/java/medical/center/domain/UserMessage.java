@@ -16,7 +16,7 @@ public class UserMessage {
 	@ManyToOne
 	@JoinColumn(name = "userMessagesRecive")
 	private User reciver;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "userMessagesSend")
 	private User sender;
 	private String title;

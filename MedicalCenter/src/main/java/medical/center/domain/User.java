@@ -9,27 +9,40 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.jasypt.hibernate4.type.EncryptedStringType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@TypeDef(
+        name="encryptedString", 
+        typeClass=EncryptedStringType.class, 
+        parameters={@Parameter(name="encryptorRegisteredName",
+                               value="hibernateStringEncryptor")}
+)
+//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class User {
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String login;
-	//@ColumnTransformer(write = "EncryptByPassPhrase('12',?)", read = "DECRYPTBYPASSPHRASE ('12',pswd)")
+	@Autowired
+	@Type(type="encryptedString")
 	private String password;
 	private String firstName;
 	private String lastName;
+	@Column(nullable=true)
 	private String email;
+	@Column(nullable=true)
 	private String phone;
+	@Column(nullable=true)
 	private LocalDate bornDate;
 	@CreatedDate
 	private LocalDateTime createTime;
@@ -38,9 +51,11 @@ public class User {
 	@Transient
 	private final static String[] rolesArray = { "Admin", "Doctor", "Patient", "Receptionist" };
 	private int role;
+	@Autowired(required=false)
 	@OneToMany(cascade = CascadeType.ALL)
 	@Column(nullable = true)
 	private List<UserMessage> userMessagesRecive;
+	@Autowired(required=false)
 	@OneToMany(cascade = CascadeType.ALL)
 	@Column(nullable = true)
 	private List<UserMessage> userMessagesSend;

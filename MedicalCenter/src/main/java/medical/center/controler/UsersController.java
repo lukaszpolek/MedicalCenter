@@ -11,13 +11,13 @@ import medical.center.domain.User;
 import medical.center.repository.UserRepository;
 
 @RestController
-public class UsersControler {
+public class UsersController {
 
 	@Autowired
 	private final UserRepository userRepository;
 	private final UserGenerator userGenerator;
 
-	public UsersControler(UserRepository userRepository, UserGenerator userGenerator) {
+	public UsersController(UserRepository userRepository, UserGenerator userGenerator) {
 		this.userRepository = userRepository;
 		this.userGenerator = userGenerator;
 	}

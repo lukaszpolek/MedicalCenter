@@ -1,10 +1,13 @@
 package medical.center.domain;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class FreeDay {
@@ -12,7 +15,7 @@ public class FreeDay {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private Date freeDay;
+	private LocalDate freeDay;
 
 	public Long getId() {
 		return id;
@@ -22,11 +25,11 @@ public class FreeDay {
 		this.id = id;
 	}
 
-	public Date getFreeDay() {
+	public LocalDate getFreeDay() {
 		return freeDay;
 	}
 
-	public void setFreeDay(Date freeDay) {
+	public void setFreeDay(LocalDate freeDay) {
 		this.freeDay = freeDay;
 	}
 

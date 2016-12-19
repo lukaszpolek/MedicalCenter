@@ -2,21 +2,40 @@ package medical.center.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-@Entity
-public class Patient{
+import org.springframework.beans.factory.annotation.Autowired;
 
-	@OneToOne
+@Entity
+public class Patient {
+
+	@Id
+	@GeneratedValue
+	Long id;
+	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
+	@Autowired(required=false)
 	@OneToOne
 	private Doctor doctorOfPatient;
+	@Autowired(required=false)
 	@OneToMany
 	private List<Reservation> reservationsList;
+	@Autowired(required=false)
 	@OneToMany
 	private List<Visit> visitsList;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public User getUser() {
 		return user;

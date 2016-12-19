@@ -2,10 +2,13 @@ package medical.center.domain;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Visit {
@@ -18,6 +21,7 @@ public class Visit {
 	@ManyToOne
 	private Doctor doctor;
 	private LocalDate visiteDate;
+	@Column(nullable=true)
 	private String suggestionsTreatment;
 	
 	public Long getId() {

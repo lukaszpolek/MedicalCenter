@@ -8,10 +8,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableJpaRepositories("medical.center.*")
-@ComponentScan("medical.center.*")
-@EntityScan("medical.center.*")   
+@EnableJpaRepositories("medical.center")
+@ComponentScan(basePackages =  "medical.center")
+@EntityScan("medical.center")   
 @EnableTransactionManagement
+//@EnableConfigurationProperties(HibernateConfiguration.class)
+//@Import({HibernateConfiguration.class})
 public class MedicalCenterApplication {
 
 	public static void main(String[] args) {
