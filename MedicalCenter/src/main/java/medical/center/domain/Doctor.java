@@ -17,17 +17,22 @@ public class Doctor{
 	@Id
 	@GeneratedValue
 	Long id;
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	private User user;
+	
 	@Autowired(required=false)
 	@OneToMany
 	private List<HoursOfWork> hoursOfWork;
+	
 	@Autowired(required=false)
 	@OneToMany
 	private List<FreeDay> freeDays;
+	
 	@Autowired(required=false)
 	@OneToMany
 	private List<Reservation> reservationList;
+	
 	@Autowired(required=false)
 	@OneToMany
 	private List<Visit> visitsList;

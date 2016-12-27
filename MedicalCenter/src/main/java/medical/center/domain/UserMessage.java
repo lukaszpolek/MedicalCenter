@@ -13,16 +13,22 @@ public class UserMessage {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	@ManyToOne
 	@JoinColumn(name = "userMessagesRecive")
 	private User reciver;
+	
 	@ManyToOne
 	@JoinColumn(name = "userMessagesSend")
 	private User sender;
+	
 	private String title;
+	
 	private String message;
+	
 	private boolean status = false; // read by user or not read
 
+	
 	public long getId() {
 		return id;
 	}

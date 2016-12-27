@@ -12,50 +12,53 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.Parameter;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.jasypt.hibernate4.type.EncryptedStringType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+//@Inheritance(strategy=InheritanceType.SINGLE_TABLE))
+
 @Entity
-@TypeDef(
-        name="encryptedString", 
-        typeClass=EncryptedStringType.class, 
-        parameters={@Parameter(name="encryptorRegisteredName",
-                               value="hibernateStringEncryptor")}
-)
-//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class User {
 	@Id
 	@GeneratedValue
 	private Long id;
+
 	private String login;
+
 	@Autowired
-	@Type(type="encryptedString")
 	private String password;
+
 	private String firstName;
+
 	private String lastName;
-	@Column(nullable=true)
+
+	@Column(nullable = true)
 	private String email;
-	@Column(nullable=true)
+
+	@Column(nullable = true)
 	private String phone;
-	@Column(nullable=true)
+
+	@Column(nullable = true)
 	private LocalDate bornDate;
+
 	@CreatedDate
 	private LocalDateTime createTime;
+
 	@LastModifiedDate
 	private LocalDateTime modDate;
+
 	@Transient
 	private final static String[] rolesArray = { "Admin", "Doctor", "Patient", "Receptionist" };
+
 	private int role;
-	@Autowired(required=false)
+
+	@Autowired(required = false)
 	@OneToMany(cascade = CascadeType.ALL)
 	@Column(nullable = true)
 	private List<UserMessage> userMessagesRecive;
-	@Autowired(required=false)
+
+	@Autowired(required = false)
 	@OneToMany(cascade = CascadeType.ALL)
 	@Column(nullable = true)
 	private List<UserMessage> userMessagesSend;

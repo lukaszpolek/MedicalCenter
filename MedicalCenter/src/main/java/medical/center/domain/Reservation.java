@@ -14,15 +14,20 @@ public class Reservation {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	private LocalDateTime reservationFromDate;
+	
 	private LocalDateTime reservationToDate;
+	
 	@ManyToOne
 	@JoinColumn(name = "patient")
 	private Patient patient;
+	
 	@ManyToOne
 	@JoinColumn(name = "reservationsList")
 	private Doctor doctor;
 
+	
 	public Long getId() {
 		return id;
 	}

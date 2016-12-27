@@ -27,6 +27,7 @@ public class ReceptionistController {
 		this.receptionistGenerator = receptionistGenerator;
 	}
 
+	
 	@PostConstruct
 	public void runAtStart() {
 		receptionistRepository.save(receptionistGenerator.generate());

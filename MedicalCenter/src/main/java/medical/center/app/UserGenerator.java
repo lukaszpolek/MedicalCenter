@@ -2,6 +2,8 @@ package medical.center.app;
 
 import java.time.LocalDate;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import medical.center.domain.Receptionist;
@@ -9,6 +11,9 @@ import medical.center.domain.User;
 
 @Service
 public class UserGenerator {
+	
+	@Autowired
+	private PasswordEncoder encoder;
 
 //
 //	private final UsersRepository usersRepository;
@@ -30,7 +35,7 @@ public class UserGenerator {
 		user.setFirstName("Kuba");
 		user.setLastName("Polek");
 		user.setLogin("kuba");
-		user.setPassword("password");
+		user.setPassword(encoder.encode("password"));
 		user.setPhone("122223442");
 		user.setRole(3);		
 		return user;

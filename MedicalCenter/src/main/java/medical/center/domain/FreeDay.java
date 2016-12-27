@@ -15,6 +15,7 @@ public class FreeDay {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	private LocalDate freeDay;
 
 	public Long getId() {

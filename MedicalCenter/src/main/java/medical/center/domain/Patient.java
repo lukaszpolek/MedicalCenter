@@ -17,14 +17,18 @@ public class Patient {
 	@Id
 	@GeneratedValue
 	Long id;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
+	
 	@Autowired(required=false)
 	@OneToOne
 	private Doctor doctorOfPatient;
+	
 	@Autowired(required=false)
 	@OneToMany
 	private List<Reservation> reservationsList;
+	
 	@Autowired(required=false)
 	@OneToMany
 	private List<Visit> visitsList;

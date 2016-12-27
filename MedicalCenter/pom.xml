@@ -73,15 +73,13 @@
 			<version>2.7.4</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jasypt</groupId>
-			<artifactId>jasypt</artifactId>
-			<version>1.9.2</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-crypto</artifactId>
+			<version>4.2.0.RELEASE</version>
 		</dependency>
-		<dependency>
-			<groupId>org.jasypt</groupId>
-			<artifactId>jasypt-hibernate4</artifactId>
-			<version>1.9.0</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.jasypt</groupId> <artifactId>jasypt</artifactId> 
+			<version>1.9.2</version> </dependency> <dependency> <groupId>org.jasypt</groupId> 
+			<artifactId>jasypt-hibernate4</artifactId> <version>1.9.0</version> </dependency> -->
 	</dependencies>
 
 

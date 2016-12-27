@@ -21,10 +21,13 @@ public class Receptionist {
 	@Id
 	@GeneratedValue
 	Long id;
+	
 	@Autowired
 	@OneToOne(cascade=CascadeType.ALL , fetch = FetchType.EAGER)
 	private User user;
+	
 	private int salary;
+	
 	@Autowired(required=false)
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<FreeDay> freeDays;
